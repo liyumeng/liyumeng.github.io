@@ -33,8 +33,8 @@ if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
 end
 
 desc "Initial setup for Octopress: copies the default theme into the path of Jekyll's generator. Rake install defaults to rake install[classic] to install a different theme run rake install[some_theme_name]"
-task :install, :theme do |t, args|
-  if File.directory?(source_dir) || File.directory?("sass")
+task :install, [:theme,:overwrite] do |t, args|
+  if args.overwrite!="y"&&(File.directory?(source_dir) || File.directory?("sass"))
     abort("rake aborted!") if ask("A theme is already installed, proceeding will overwrite existing files. Are you sure?", ['y', 'n']) == 'n'
   end
   # copy theme into working Jekyll directories
