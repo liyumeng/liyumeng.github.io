@@ -4,7 +4,7 @@
   <title><![CDATA[Yumeng Li's Blog]]></title>
   <link href="http://liyumeng.github.io/atom.xml" rel="self"/>
   <link href="http://liyumeng.github.io/"/>
-  <updated>2015-03-26T17:15:42+00:00</updated>
+  <updated>2015-03-26T17:49:21+00:00</updated>
   <id>http://liyumeng.github.io/</id>
   <author>
     <name><![CDATA[Yumeng Li]]></name>
@@ -12,5 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在这儿的第一篇博文]]></title>
+    <link href="http://liyumeng.github.io/blog/2015/03/26/zai-zhe-er-de-di-yi-pian-bo-wen/"/>
+    <updated>2015-03-26T17:22:56+00:00</updated>
+    <id>http://liyumeng.github.io/blog/2015/03/26/zai-zhe-er-de-di-yi-pian-bo-wen</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
 </feed>
