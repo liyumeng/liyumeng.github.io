@@ -3,23 +3,24 @@
 # ----------------------- #
 
 url: http://liyumeng.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Yumeng Li's Blog
+subtitle: .Net  Python  Machine Learning
+author: Yumeng Li
 simple_search: https://www.google.com/search
-description:
+description: 目前没有任何描述
+    
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
-date_format: "ordinal"
+date_format: "%Y-%m-%d %H-%M-%S"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: lym199286@live.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
