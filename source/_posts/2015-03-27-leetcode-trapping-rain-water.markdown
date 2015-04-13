@@ -25,7 +25,7 @@ The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In th
 
 1. 将每次出栈产生的结果加到一起就行了。
 
-```
+``` c++
 class Solution {
 public:
     int trap(int A[], int n) {
