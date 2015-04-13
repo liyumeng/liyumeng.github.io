@@ -4,7 +4,11 @@
   <title><![CDATA[Yumeng Li's Blog]]></title>
   <link href="http://liyumeng.github.io/atom.xml" rel="self"/>
   <link href="http://liyumeng.github.io/"/>
+<<<<<<< HEAD
   <updated>2015-04-13T20:35:52+08:00</updated>
+=======
+  <updated>2015-03-27T02:15:03+00:00</updated>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
   <id>http://liyumeng.github.io/</id>
   <author>
     <name><![CDATA[Yumeng Li]]></name>
@@ -14,6 +18,7 @@
 
   
   <entry>
+<<<<<<< HEAD
     <title type="html"><![CDATA[WebSocket Server 的Python实现]]></title>
     <link href="http://liyumeng.github.io/blog/2015/04/13/websocket-server-de-python-shixian-dot-md/"/>
     <updated>2015-04-13T20:02:49+08:00</updated>
@@ -374,6 +379,11 @@
     <title type="html"><![CDATA[[Leetcode] Trapping Rain Water - 递减栈]]></title>
     <link href="http://liyumeng.github.io/blog/2015/03/27/leetcode-trapping-rain-water/"/>
     <updated>2015-03-27T09:12:24+08:00</updated>
+=======
+    <title type="html"><![CDATA[[Leetcode] Trapping Rain Water - 递减栈]]></title>
+    <link href="http://liyumeng.github.io/blog/2015/03/27/leetcode-trapping-rain-water/"/>
+    <updated>2015-03-27T01:12:24+00:00</updated>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
     <id>http://liyumeng.github.io/blog/2015/03/27/leetcode-trapping-rain-water</id>
     <content type="html"><![CDATA[<h3>题目：Trapping Rain Water <a href="https://leetcode.com/problems/trapping-rain-water/">点击查看</a></h3>
 
@@ -398,7 +408,11 @@ Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p
 </ol>
 
 
+<<<<<<< HEAD
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+=======
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -424,6 +438,7 @@ Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
+<<<<<<< HEAD
 </pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 </span><span class='line'><span class="k">public</span><span class="o">:</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">trap</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
@@ -451,15 +466,49 @@ Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p
 </span><span class='line'>    <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
 </span><span class='line'><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure>
+=======
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Solution {
+</span><span class='line'>public:
+</span><span class='line'>    int trap(int A[], int n) {
+</span><span class='line'>        int top=0;
+</span><span class='line'>        if(n&lt;3) return 0;
+</span><span class='line'>        s[top++]=0;
+</span><span class='line'>        int res=0,t=0,pre=0;
+</span><span class='line'>        for(int i=1;i&lt;n;i++)
+</span><span class='line'>        {
+</span><span class='line'>            while(top&gt;0&&A[i]&gt;=A[s[top-1]])
+</span><span class='line'>            {
+</span><span class='line'>                t=A[s[--top]];//栈顶元素，能进到这层循环里，说明A[i]比栈顶元素要大
+</span><span class='line'>                if(top&gt;0)//弹出刚刚的栈顶元素后,那这次栈顶的元素一定比刚刚弹出的那个大
+</span><span class='line'>                {
+</span><span class='line'>                    pre=s[top-1];//新的栈顶元素
+</span><span class='line'>                    res+=(i-pre-1)*(min(A[k],A[i])-t);//这样新栈顶元素与A[i]这间就形成了一个凹槽
+</span><span class='line'>                }
+</span><span class='line'>            }
+</span><span class='line'>            s[top++]=i;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        return res;
+</span><span class='line'>    }
+</span><span class='line'>private:
+</span><span class='line'>    int s[100000];
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[在这儿的第一篇博文]]></title>
+<<<<<<< HEAD
     <link href="http://liyumeng.github.io/blog/2015/03/27/zai-zhe-er-de-di-yi-pian-bo-wen/"/>
     <updated>2015-03-27T01:22:56+08:00</updated>
     <id>http://liyumeng.github.io/blog/2015/03/27/zai-zhe-er-de-di-yi-pian-bo-wen</id>
+=======
+    <link href="http://liyumeng.github.io/blog/2015/03/26/zai-zhe-er-de-di-yi-pian-bo-wen/"/>
+    <updated>2015-03-26T17:22:56+00:00</updated>
+    <id>http://liyumeng.github.io/blog/2015/03/26/zai-zhe-er-de-di-yi-pian-bo-wen</id>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
     <content type="html"><![CDATA[<p>最近比较闲，便抽出一部分时间在github上搭建了这个博客。
 应该是很早之前就有这个想法了，因为各种原因一拖再拖。今天终于可以为此庆贺一下了。
 好久不写这类文字了，竟不知道写什么了，今天在此Mark一下吧，以后争取经常更新。</p>

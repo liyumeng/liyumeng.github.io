@@ -109,7 +109,11 @@ Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p
 </ol>
 
 
+<<<<<<< HEAD
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+=======
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -135,6 +139,7 @@ Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
+<<<<<<< HEAD
 </pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 </span><span class='line'><span class="k">public</span><span class="o">:</span>
 </span><span class='line'>    <span class="kt">int</span> <span class="n">trap</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
@@ -162,6 +167,34 @@ Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p
 </span><span class='line'>    <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
 </span><span class='line'><span class="p">};</span>
 </span></code></pre></td></tr></table></div></figure>
+=======
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Solution {
+</span><span class='line'>public:
+</span><span class='line'>    int trap(int A[], int n) {
+</span><span class='line'>        int top=0;
+</span><span class='line'>        if(n&lt;3) return 0;
+</span><span class='line'>        s[top++]=0;
+</span><span class='line'>        int res=0,t=0,pre=0;
+</span><span class='line'>        for(int i=1;i&lt;n;i++)
+</span><span class='line'>        {
+</span><span class='line'>            while(top&gt;0&&A[i]&gt;=A[s[top-1]])
+</span><span class='line'>            {
+</span><span class='line'>                t=A[s[--top]];//栈顶元素，能进到这层循环里，说明A[i]比栈顶元素要大
+</span><span class='line'>                if(top&gt;0)//弹出刚刚的栈顶元素后,那这次栈顶的元素一定比刚刚弹出的那个大
+</span><span class='line'>                {
+</span><span class='line'>                    pre=s[top-1];//新的栈顶元素
+</span><span class='line'>                    res+=(i-pre-1)*(min(A[k],A[i])-t);//这样新栈顶元素与A[i]这间就形成了一个凹槽
+</span><span class='line'>                }
+</span><span class='line'>            }
+</span><span class='line'>            s[top++]=i;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        return res;
+</span><span class='line'>    }
+</span><span class='line'>private:
+</span><span class='line'>    int s[100000];
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+>>>>>>> 2a0b519e1b6b55a198ededd02a7c74dcc23c891b
 
 </div>
 
