@@ -1,0 +1,215 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>[Leetcode] Trapping Rain Water - 递减栈 - Yumeng Li&#8217;s Blog</title>
+	<meta name="author" content="Yumeng Li">
+
+	
+	<meta name="description" content="[Leetcode] Trapping Rain Water - 递减栈 题目：Trapping Rain Water 点击查看 Given n non-negative integers representing an elevation map where the width of each &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Yumeng Li's Blog" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://liyumeng.github.io/blog/2015/03/27/leetcode-trapping-rain-water/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	<img src="/images/profile_160x160.jpg" alt="Profile Picture" style="width: 160px;" />
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/shashankmehta">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+<section class="aboutme">
+  <p>
+    目前没有任何描述
+  </p>
+</section>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:lym199286@live.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">[Leetcode] Trapping Rain Water - 递减栈</h1>
+	<div class="entry-content" itemprop="articleBody"><h3>题目：Trapping Rain Water <a href="https://leetcode.com/problems/trapping-rain-water/">点击查看</a></h3>
+
+<p><strong>Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+For example,
+Given <code>[0,1,0,2,1,0,1,3,2,1,2,1]</code>, return <code>6</code>.</strong></p>
+
+<p><img src="http://www.leetcode.com/wp-content/uploads/2012/08/rainwatertrap.png" alt="" /></p>
+
+<p>The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped. Thanks Marcos for contributing this image!</p>
+
+<hr />
+
+<h3>解题思路：</h3>
+
+<p>时刻维护一个递减的栈。</p>
+
+<ol>
+<li>当前元素比栈顶元素小时，直接进栈；</li>
+<li><p>当前元素大于等于栈顶元素时，弹出栈顶元素，由弹出后新的栈顶元素与当前元素构成一个凹槽，但凹槽并不一定是见底的。比如4、2、3,其中的4和3形成一个凹槽,但因为中间有个2，所以只能容纳1个单位的水。这也就是min(A[k],A[i])-t的原因，t就是这个2，A[k]=4,A[i]=3。</p></li>
+<li><p>将每次出栈产生的结果加到一起就行了。</p></li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+</span><span class='line'><span class="k">public</span><span class="o">:</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">trap</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">top</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">s</span><span class="p">[</span><span class="n">top</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">pre</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="k">while</span><span class="p">(</span><span class="n">top</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">A</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">top</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="n">t</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="o">--</span><span class="n">top</span><span class="p">]];</span><span class="c1">//栈顶元素，能进到这层循环里，说明A[i]比栈顶元素要大</span>
+</span><span class='line'>                <span class="k">if</span><span class="p">(</span><span class="n">top</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="c1">//弹出刚刚的栈顶元素后,那这次栈顶的元素一定比刚刚弹出的那个大</span>
+</span><span class='line'>                <span class="p">{</span>
+</span><span class='line'>                    <span class="n">pre</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="n">top</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="c1">//新的栈顶元素</span>
+</span><span class='line'>                    <span class="n">res</span><span class="o">+=</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">pre</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="n">t</span><span class="p">);</span><span class="c1">//这样新栈顶元素与A[i]这间就形成了一个凹槽</span>
+</span><span class='line'>                <span class="p">}</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="n">s</span><span class="p">[</span><span class="n">top</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="k">private</span><span class="o">:</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="mi">100000</span><span class="p">];</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    Yumeng Li
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
