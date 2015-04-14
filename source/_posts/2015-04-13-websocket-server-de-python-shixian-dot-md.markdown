@@ -4,13 +4,12 @@ title: "WebSocket Server 的Python实现"
 date: 2015-04-13 20:02:49 +0800
 comments: true
 categories: 
-
 ---
 
 **WebSocket** 是一种HTML5新的协议，它实现了浏览器与服务器全双工通信。为了大家能对WebSocket有更深入的了解，我们还是先看看浏览器的正常的Http请求都干了什么。
 
 ![](http://i2.tietuku.com/14cbfc2972b5206f.jpg)
-
+<!--more-->
 如上图，我们平时用浏览器访问网页，一般都是由浏览器向服务器发送一个Http请求，服务器返回相应的数据，其过程可描述为:
 
 1. 客户端（浏览器）与服务器建立TCP连接，进行TCP连接的三次握手
